@@ -1,0 +1,60 @@
+﻿<Window x:Class="MTS_TEST.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MTS_TEST"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+	<Grid>
+		<TextBox x:Name="CityTextBox" HorizontalAlignment="Left" Height="66" Margin="24,10,0,0" TextWrapping="Wrap" Text="Moscow" VerticalAlignment="Top" Width="565" FontSize="30"/>
+		<Button x:Name="SendResponeButton" Content="Узнать погоду" HorizontalAlignment="Right" Margin="0,26,10,0" VerticalAlignment="Top" Width="176" Height="50" Click="SendResponeButton_Click" RenderTransformOrigin="0.489,0.08"/>
+		<DataGrid Visibility="Visible" IsReadOnly="True" VerticalScrollBarVisibility="Auto" x:Name="citiesGrid" HorizontalAlignment="Stretch" MinHeight="150" Margin="24,92,0,0" VerticalAlignment="Stretch" 
+				  MinWidth="500" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="False" MouseDoubleClick="citiesGrid_DoubleClicked" SelectionMode="Single">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Город" Binding="{Binding Path=City}"/>
+				<DataGridTextColumn Header="Последний Запрос" Binding="{Binding Path=DateTime}"/>
+				<DataGridTextColumn Header="Температура C" Binding="{Binding Path=Temperature}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<StackPanel x:Name="InfoPanel" Visibility="Hidden" HorizontalAlignment="Left" Height="300" Margin="24,109,0,0" VerticalAlignment="Top" Width="735" RenderTransformOrigin="0.55,0.56">
+			<Grid x:Name="infoGrid" ShowGridLines="True" Height="200">
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Label Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center">Данные</Label>
+				<Label Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center">Значение</Label>
+				<Label Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Center">Город</Label>
+				<Label Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Center">ID Города</Label>
+				<Label Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Center">Страна</Label>
+				<Label Grid.Column="0" Grid.Row="4" HorizontalContentAlignment="Center">Время Запроса</Label>
+				<Label Grid.Column="0" Grid.Row="5" HorizontalContentAlignment="Center">Температура</Label>
+				<Label Grid.Column="0" Grid.Row="6" HorizontalContentAlignment="Center">Погода</Label>
+				<Label Grid.Column="0" Grid.Row="7" HorizontalContentAlignment="Center">Описание</Label>
+
+				<Label Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" Name="LabelInfo_City"></Label>
+				<Label Grid.Column="1" Grid.Row="2" HorizontalContentAlignment="Center" Name="LabelInfo_CityId"></Label>
+				<Label Grid.Column="1" Grid.Row="3" HorizontalContentAlignment="Center" Name="LabelInfo_Country"></Label>
+				<Label Grid.Column="1" Grid.Row="4" HorizontalContentAlignment="Center" Name="LabelInfo_DateTime"></Label>
+				<Label Grid.Column="1" Grid.Row="5" HorizontalContentAlignment="Center" Name="LabelInfo_Temperature"></Label>
+				<Label Grid.Column="1" Grid.Row="6" HorizontalContentAlignment="Center" Name="LabelInfo_Weath"></Label>
+				<Label Grid.Column="1" Grid.Row="7" HorizontalContentAlignment="Center" Name="LabelInfo_Description"></Label>
+			</Grid>
+			<Button x:Name="back" Content="Назад" Click="back_Click"/>
+			<Button x:Name="refresh" Content="Обновить" Click="refresh_Click"/>
+			<Button x:Name="delete" Content="Удалить" Click="delete_Click"/>
+		</StackPanel>
+
+	</Grid>
+</Window>
